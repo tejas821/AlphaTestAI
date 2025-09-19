@@ -1,82 +1,67 @@
 .sidebar {
   position: fixed;
-  top: 70px; /* align under top nav */
+  top: 70px;
   left: 0;
   height: calc(100vh - 70px);
-  width: 50px; /* collapsed width */
-  /* Liquid glass + subtle black→white gradient */
-  background: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(255,255,255,0.10)); /* sheen */
+  width: 50px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(255,255,255,0.10));
   backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
-  border-right: 1px solid rgba(255,255,255,0.22); /* glass edge */
+  border-right: 1px solid rgba(255,255,255,0.22);
   box-shadow:
-    10px 0 24px -18px rgba(0,0,0,0.25) inset, /* inner depth */
-    0 8px 18px rgba(0,0,0,0.06);               /* outer lift */
+    10px 0 24px -18px rgba(0,0,0,0.25) inset,
+    0 8px 18px rgba(0,0,0,0.06);
   transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  z-index: 900; /* below top bar */
+  z-index: 900;
 
-  &:hover {
-    width: 300px; /* expanded width */
-    /* Slightly richer glass on hover */
-    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.14));
-    box-shadow:
-      12px 0 28px -16px rgba(0,0,0,0.28) inset,
-      0 10px 24px rgba(0,0,0,0.08);
+  &:hover { width: 300px; background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.14)); box-shadow: 12px 0 28px -16px rgba(0,0,0,0.28) inset, 0 10px 24px rgba(0,0,0,0.08); }
+
+  .menu-list {
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      color: #7fa6dd;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+      border-radius: 10px;
+
+      i {
+        font-size: 1.25rem;
+        max-width: 350px;
+        text-align: center;
+        opacity: 0.95;
+      }
+
+      .menu-label {
+        opacity: 0;
+        transform: translateX(-4px);
+        white-space: nowrap;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      &:hover { background: rgba(255,255,255,0.10); color: #3f5688; transform: translateX(2px); }
+
+      &.active {
+        background: rgba(255,255,255,0.16);
+        color: #fafafa;
+        font-weight: 600;
+        box-shadow: inset 0 0 0 1px rgba(232,232,232,0.22);
+      }
+    }
   }
 
-    .menu-list {
-        list-style: none;
-        padding: 0.5rem 0;
-        margin: 0;
-
-        li {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.75rem 1rem;
-        cursor: pointer;
-        color: #7fa6dd; /* neutral foreground for contrast */
-        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
-        border-radius: 10px; /* soften item shape */
-
-        i {
-            font-size: 1.25rem;
-            min-width: 30px; /* keep icon aligned */
-            text-align: center;
-            opacity: 0.95; /* crisp icons on glass */
-        }
-
-        .menu-label {
-            opacity: 0;
-            white-space: nowrap;
-            transition: opacity 0.2s ease;
-        }
-
-        &:hover {
-            /* translucent hover fill to keep glass feel */
-            background: rgba(255,255,255,0.10);
-            color: #3f5688;
-            transform: translateX(2px);
-        }
-
-        &.active {
-            /* active gets subtle fill, thin inner ring, and brand-ish tint */
-            background: rgba(255,255,255,0.16);
-            color: #fafafa;
-            font-weight: 600;
-            box-shadow: inset 0 0 0 1px rgba(232, 232, 232, 0.22);
-        }
-        }
-    }
-
-    &:hover .menu-label { opacity: 1; }
+  /* Reveal labels whenever the sidebar is hovered */
+  &:hover .menu-list li .menu-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* Optional: divider style for groups */
-.sidebar .menu-divider {
-  height: 1px;
-  margin: 0.5rem 1rem;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  border: 0;
-}
+/* Remove the incorrect direct-child selector; it never matched your DOM */

@@ -1,0 +1,21 @@
+<div class="grid gap-4">
+    <p-autocomplete [(ngModel)]="selectedDomain" placeholder="Select Domain"  [dropdown]="true" [suggestions]="domains" />
+
+  <p-multiSelect 
+    [options]="getStandardsForDomain()" 
+    optionLabel="name" 
+    placeholder="Select Standards"
+    [(ngModel)]="selectedStandards">
+  </p-multiSelect>
+
+<p-multiSelect 
+    [options]="getStandardsForDomain()" 
+    optionLabel="name" 
+    placeholder="Select Standards"
+    [(ngModel)]="selectedStandards">
+  </p-multiSelect>
+
+  <p-autocomplete [(ngModel)]="selectedProject" placeholder="Select Project" [dropdown]="true" [suggestions]="getProjectsForPlatform()" />
+
+  <button pButton type="button" label="Start Test Case Generation" icon="pi pi-play"></button>
+</div>

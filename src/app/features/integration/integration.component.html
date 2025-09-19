@@ -1,0 +1,18 @@
+<div class="grid gap-4">
+  <p-panel *ngFor="let platform of platforms" [header]="platform.name" [toggleable]="true">
+    <div class="grid gap-2">
+      <div class="flex items-center gap-2 mb-2">
+        <i [class]="platform.icon"></i>
+        <span>{{ platform.name }}</span>
+      </div>
+
+      <div *ngFor="let field of platform.fields">
+        <label>{{ field.label }}</label>
+        <input pInputText 
+               [type]="field.type" 
+               [placeholder]="field.placeholder" 
+               [(ngModel)]="connections[0][field.key]">
+      </div>
+    </div>
+  </p-panel>
+</div>

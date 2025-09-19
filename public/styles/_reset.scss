@@ -1,0 +1,25 @@
+/* Minimal Reset — safe with UI libraries */
+
+/* 1) Box sizing + margin reset */
+*, *::before, *::after { box-sizing: border-box; } /* predictable sizing across components */ /* [38][80] */
+* { margin: 0; } /* remove UA margins without touching padding/borders */ /* [68] */
+
+/* 2) Base body without typography overrides */
+html, body { height: 100%; } /* allow full-height layouts */ /* [68] */
+body { line-height: 1.5; -webkit-font-smoothing: antialiased; } /* readable baseline, keeps theme fonts/colors */ /* [38] */
+
+/* 3) Media defaults */
+img, picture, video, canvas, svg { display: block; max-width: 100%; } /* responsive media, non-intrusive */ /* [38][68] */
+
+/* 4) Form controls inherit only typography (colors by theme) */
+input, button, textarea, select { font: inherit; color: inherit; } /* avoid Times fallback, preserve PrimeNG look */ /* [38][68] */
+
+/* 5) Text overflow safety */
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; } /* prevent layout breaks from long strings */ /* [38] */
+
+/* 6) Root stacking context for portals/overlays */
+#root, #__next, app-root { isolation: isolate; } /* safer z-index layering in SPAs */ /* [38] */
+
+/* 7) Tables neutral baseline (non-opinionated) */
+table { border-collapse: collapse; border-spacing: 0; width: 100%; } /* sane defaults, won’t fight component CSS */ /* [68] */
+th, td { padding: 0; text-align: left; vertical-align: top; } /* minimal reset only */ /* [68] */

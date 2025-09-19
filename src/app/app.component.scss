@@ -1,0 +1,11 @@
+.main-layout{
+    position: relative;
+    .section{
+        position: absolute;
+        height: calc(100vh - 70px);
+        width: calc(100vw - 50px);
+        top: 65px;
+        left: 50px;
+        background-color: antiquewhite;
+    }
+}

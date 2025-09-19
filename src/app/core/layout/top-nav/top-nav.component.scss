@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  height: 70px;                     /* fixed navbar height */
+  background: #ffffff;              /* white background */
+  border-bottom: 1px solid #9bb8f0; /* subtle gray border (tailwind gray-200) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;                 /* stays at top */
+  top: 0;
+  z-index: 1000;                    /* above content */
+}
+
+.list-items {
+  width: 100%;
+  max-width: 1400px;                /* keeps content centered on large screens */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;                /* side padding */
+}
+
+.product-name {
+  font-size: 1.25rem;   /* ~20px */
+  font-weight: 600;
+  color: #111827;       /* dark gray for contrast */
+}
+
+.p-toolbar-group-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cursor-pointer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #374151;       /* neutral gray */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cursor-pointer:hover {
+  color: #111827;       /* darker on hover */
+}

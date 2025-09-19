@@ -1,0 +1,82 @@
+.sidebar {
+  position: fixed;
+  top: 70px; /* align under top nav */
+  left: 0;
+  height: calc(100vh - 70px);
+  width: 50px; /* collapsed width */
+  /* Liquid glass + subtle black→white gradient */
+  background: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(255,255,255,0.10)); /* sheen */
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-right: 1px solid rgba(255,255,255,0.22); /* glass edge */
+  box-shadow:
+    10px 0 24px -18px rgba(0,0,0,0.25) inset, /* inner depth */
+    0 8px 18px rgba(0,0,0,0.06);               /* outer lift */
+  transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  z-index: 900; /* below top bar */
+
+  &:hover {
+    width: 300px; /* expanded width */
+    /* Slightly richer glass on hover */
+    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.14));
+    box-shadow:
+      12px 0 28px -16px rgba(0,0,0,0.28) inset,
+      0 10px 24px rgba(0,0,0,0.08);
+  }
+
+    .menu-list {
+        list-style: none;
+        padding: 0.5rem 0;
+        margin: 0;
+
+        li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        color: #7fa6dd; /* neutral foreground for contrast */
+        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+        border-radius: 10px; /* soften item shape */
+
+        i {
+            font-size: 1.25rem;
+            min-width: 30px; /* keep icon aligned */
+            text-align: center;
+            opacity: 0.95; /* crisp icons on glass */
+        }
+
+        .menu-label {
+            opacity: 0;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        &:hover {
+            /* translucent hover fill to keep glass feel */
+            background: rgba(255,255,255,0.10);
+            color: #3f5688;
+            transform: translateX(2px);
+        }
+
+        &.active {
+            /* active gets subtle fill, thin inner ring, and brand-ish tint */
+            background: rgba(255,255,255,0.16);
+            color: #fafafa;
+            font-weight: 600;
+            box-shadow: inset 0 0 0 1px rgba(232, 232, 232, 0.22);
+        }
+        }
+    }
+
+    &:hover .menu-label { opacity: 1; }
+}
+
+/* Optional: divider style for groups */
+.sidebar .menu-divider {
+  height: 1px;
+  margin: 0.5rem 1rem;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  border: 0;
+}

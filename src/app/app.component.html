@@ -1,31 +1,11 @@
-<!-- Top Navigation Bar -->
-<p-toolbar class="topbar">
-  <div class="p-toolbar-group-left">
-    <span class="product-name">{{ topbar.productName }}</span>
+<div class="main-layout">
+  <div class="top-nav">
+    <app-top-nav></app-top-nav>
   </div>
-  <div class="p-toolbar-group-right">
-    <p-menu [popup]="true" #usermenu [model]="topbar.userMenu.items"></p-menu>
-    <div class="flex align-items-center gap-2 cursor-pointer" (click)="usermenu.toggle($event)">
-      <p-avatar icon="pi pi-user" shape="circle"></p-avatar>
-      <span>Profile</span>
-    </div>
+  <div class="side-nav">
+    <app-side-nav></app-side-nav>
   </div>
-</p-toolbar>
-<!-- Layout with Sidebar + Content -->
-<div class="layout">
-  <!-- Side Navigation -->
-  <div class="sidenav">
-    <ul class="nav-list">
-      <li *ngFor="let item of sidenav" routerLinkActive="active">
-        <a [routerLink]="item.route" class="nav-link">
-          <i [class]="item.icon"></i>
-          <span>{{ item.label }}</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="content">
+  <div class="section">
     <router-outlet></router-outlet>
   </div>
 </div>

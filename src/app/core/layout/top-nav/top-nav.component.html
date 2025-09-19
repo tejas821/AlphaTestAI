@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="list-items">
+        <div class="p-toolbar-group-left">
+        <span class="product-name">Sigma Wolves</span>
+    </div>
+    <div class="p-toolbar-group-right">
+        <p-menu [popup]="true" #usermenu [model]="[]"></p-menu>
+        <div class="flex align-items-center gap-2 cursor-pointer" (click)="usermenu.toggle($event)">
+            <p-avatar icon="pi pi-user" shape="circle"></p-avatar>
+        <span>Profile</span>
+        </div>
+    </div>
+    </div>
+</div>

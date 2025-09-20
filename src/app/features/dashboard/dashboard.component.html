@@ -1,21 +1,20 @@
-<div class="grid gap-4">
-  <!-- Stat Cards -->
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-    <p-card *ngFor="let card of statCards" class="text-center shadow-md">
-      <div class="flex flex-col items-center">
-        <i [class]="card.icon + ' text-3xl text-primary mb-2'"></i>
-        <h3>{{ card.value }}{{ card.suffix || '' }}</h3>
-        <p class="text-sm">{{ card.title }}</p>
-        <small *ngIf="card.help" class="text-muted">{{ card.help }}</small>
+<div class="dash-container">
+  <!-- content-aware grid: as many 320–400px cards per row as fit -->
+  <div class="metrics-grid">
+    <p-card styleClass="metric-card" *ngFor="let m of metrics">
+      <div class="metric-card__inner">
+        <div class="metric-card__header">
+          <span class="metric-card__label">{{ m.label }}</span>
+          <span class="metric-card__delta" [ngClass]="m.delta >= 0 ? 'is-up' : 'is-down'">
+            <i class="pi" [ngClass]="m.delta >= 0 ? 'pi-arrow-up-right' : 'pi-arrow-down-right'"></i>
+            {{ m.delta | number:'1.0-2' }}%
+          </span>
+        </div>
+        <div class="metric-card__value">
+          {{ m.value }}<span class="metric-card__unit" *ngIf="m.unit">{{ m.unit }}</span>
+        </div>
+        <div class="metric-card__sub" *ngIf="m.subtext">{{ m.subtext }}</div>
       </div>
-    </p-card>
-  </div>
-
-  <!-- Charts -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <p-card *ngFor="let chart of charts">
-      <h4>{{ chart.title }}</h4>
-      <!-- <p-chart type="{{ chart.type }}" [data]="chart.data" [options]="chart.options"></p-chart> -->
     </p-card>
   </div>
 </div>
